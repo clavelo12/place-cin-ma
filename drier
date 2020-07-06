@@ -1,0 +1,151 @@
+# !/usr/bin/python3
+# --coding: UTF-8 --
+# Stephane
+
+montant_ado=2500
+montant_adu=5000
+
+print("\n[+][+][+]===> Developpeur : Stephane <===[+][+][+]")
+print("\n",50*"+")
+
+print("\t[✓✓] Bienvenue au Cinema Cosmos [✓✓]")
+print(50*"+")
+
+nom= input("\n[*] Votre nom svp : ")
+
+genres = input("\n[*] Quel est votre Statut?:(Mr-Miss-Mme): ")
+print("\n")
+print(50*"+")
+print("\t[*] Bonjour",genres,nom,"Bienvenu a cosmos.")
+print(50*"+")
+age=int(input("\n[*] Quel est votre age ?: "))
+print("\n[*] Entrez la somme dont vous possedez [*]")
+montant = int(input("\n[*] Portefeuille : "))
+print(50*"+")
+print("\n[•]1 ticket ado coût [2500],1 ticket adu coût [5000]")
+place=int(input("\n[*] Combien de place reservez vous ?: "))
+print(50*"+")
+
+if age <= 18 :
+    montant_ado *=place
+    if montant < montant_ado:
+        preuve = montant_ado - montant
+        print("\nDesoler",genres,nom,"Vous ne pouvez pas effectuer l'achat de",place,"places")
+        print(60 * "+")
+        print("Car votre portefeuille est faible. La somme de",place,"est :",montant_ado)
+        print("Demo",montant_ado,"Fcfa est superieur a votre somme qui est ",montant,"Fcfa")
+        print(50 * "+")
+        print("[*] La preuve en est qu'il vous reste",preuve,"Fcfa a deduire.")
+        exit()
+    else:
+        reste = montant - montant_ado
+        print(50 * "+")
+        print(genres,nom,"Vous devez payez :",montant_ado,"Fcfa pour les",place,"places")
+        print(50 * "+")
+        print("Il vous reste",reste,"Fcfa",genres,nom)
+        print("Prenez du plaisir", genres, nom, "\nNous esperons vous revoir bientot.")
+        print(50 * "+")
+        pass
+else:
+    montant_adu *= place
+    if montant < montant_adu:
+        preuve = montant_adu - montant
+        print("Desoler", genres, nom, "Vous ne pouvez pas effectuer l'achat de", place, "places")
+        print(50 * "+")
+        print("Car votre portefeuille est faible. La somme de", place, "est :", montant_adu)
+        print("Demo", montant_adu, "Fcfa est superieur a votre somme qui est ", montant, "Fcfa")
+        print("[*] La preuve en est qu'il vous reste",preuve,"Fcfa a deduire.")
+        print(50 * "+")
+        exit()
+    else:
+        reste = montant - montant_adu
+        print(50 * "+")
+        print(genres,nom,"Vous devez payez :",montant_adu,"Fcfa pour les",place,"places")
+        print(50 * "+")
+        print("Il vous reste",reste,"Fcfa",genres,nom)
+        print("Prenez du plaisir",genres,nom,"\nNous esperons vous revoir bientot.")
+        print(50 * "+")
+        pass
+
+# cette liste de films
+# films = ["Casa de papel", " Prison break", "Avengers"]
+# version avec le dictionnaire
+films = [
+    { # film 1
+        "N°":"1",
+        "titre": "Casa de papel",
+        "seance": "18h05",
+        "places": 200
+    },
+    { # film 2
+        "N°":"2",
+        "titre": "Prison breack",
+        "seance": "10h10",
+        "places": 80
+    },
+    { # film 3
+        "N°":"3",
+        "titre": "Avengers",
+        "seance": "22h15",
+        "places": 1
+    }
+]
+# afficher chaque film
+print("\n\t[✓] Bienvenue dans notre ciné  [✓]\n\t[✓] Voici les films à l'affiche [✓]")
+print(50 * "*")
+for numero, film in enumerate(films, start=1):
+    titre = film['titre']
+    seance = film['seance']
+    places = film['places']
+    print(f"Film n°{numero} : {titre} : {seance} : ({places}) places dispo")
+print(50 * "+")
+
+while True:
+    
+    choix = int(input("[+] Entrer le numero du film à voir (1, 2 ou 3)\n>>>> "))
+    print("Vous avez choisi le film:", films[choix-1]['titre'])
+    nb_places = films[choix-1]['places']
+    
+    # le film n'est pas complet
+    if nb_places > 0:
+    #if nb_places ==[choix]["N°"]:
+        print("Achat effectué ") 
+        nb_places -=1
+        #films[choix-1]['places'] -= 1
+        print("Il y'a",nb_places,"disponible") #films[choix-1]['places'])
+        print(50 * "*")
+        dmd = input("Voulez vous choisir un autre film (o/n)\n>>>> ")
+        
+        if dmd=="o" or dmd=="O":
+              filt = int(input("[+] Entrer le numero du film à voir (1, 2 ou 3)\n>>>> "))
+              nb_place = films[filt-1]['places']
+              
+              if filt==choix:
+                 if nb_place > 0:                 
+                     nb_place = nb_places - 1
+                     print("Vous avez choisi le film:", films[filt-1]['titre'])
+                     print("Il y'a",nb_place,"disponible")
+                     print("Prenez du plaisir", genres, nom, "\nNous esperons vous revoir bientot.")
+                     print(50 * "*")
+                     
+                 elif filt!=choix:
+                     if nb_place > 0:                  
+                         nb_place -= 1
+                         print("Vous avez choisi le film:", films[filt-1]['titre'])
+                         print("Il y'a",nb_place,"disponible")
+                         print("Prenez du plaisir", genres, nom, "\nNous esperons vous revoir bientot.")
+                         print(50 * "*")
+                         break
+        if dmd=="n" or dmd=="N":  
+               print(50*"-")
+               print("\n\t[•] Faxel")   
+               print(50*"-")            
+        else:
+               exit()
+        
+    else:
+     
+        print("Desoler",genres,nom,"Vous ne pouvez pas effectuer l'achat de",place,"places")
+        print(50 * "+")
+        print("Car vous avez choisir",place,"place")
+        break
