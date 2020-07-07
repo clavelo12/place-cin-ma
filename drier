@@ -2,7 +2,7 @@
 # --coding: UTF-8 --
 # Stephane
 import os,sys,time
-os.system("clean")
+os.system("clear")
 montant_ado=2500
 montant_adu=5000
 
